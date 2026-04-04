@@ -3,3 +3,7 @@ pandas
 yfinance
 scikit-learn
 plotly
+matplotlib
+seaborn
+streamlit-lottie
+requests
