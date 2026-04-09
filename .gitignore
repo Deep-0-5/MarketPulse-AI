@@ -1,0 +1,14 @@
+# Security: NEVER upload secrets
+.streamlit/secrets.toml
+.env
+
+# Python artifacts
+__pycache__/
+*.pyc
+.venv/
+
+# Large data files
+data/*.csv
+
+# VS Code settings (optional but recommended)
+.vscode/
