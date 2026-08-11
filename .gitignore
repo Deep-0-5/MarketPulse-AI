@@ -1,5 +1,6 @@
 # Security: NEVER upload secrets
 .streamlit/secrets.toml
+logs/
 .env
 
 # Python artifacts
@@ -12,3 +13,6 @@ data/*.csv
 
 # VS Code settings (optional but recommended)
 .vscode/
+
+# demo_email = "demo@marketpulse.ai"
+# demo_password = "marketpulse-demo"
