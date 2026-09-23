@@ -63,8 +63,8 @@ except Exception as e:
     token = None
 
 st.sidebar.markdown("---")
-refresh_interval = st.sidebar.slider("Refresh Interval (Sec):", 30, 300, 60)
-auto_refresh = st.sidebar.checkbox("Enable Live Updates", value=True)
+refresh_interval = st.sidebar.slider("Refresh Interval (Sec):", 60, 300, 120)
+auto_refresh = st.sidebar.checkbox("Enable Live Updates", value=False)
 timer_placeholder = st.sidebar.empty()
 
 # --- ML PIPELINE INITIALIZATION ---
@@ -161,10 +161,9 @@ def run_analysis():
         sns.scatterplot(data=df_ready.tail(300), x='RSI', y='Volatility', hue='Target', palette='magma', ax=ax_sns)
         st.pyplot(fig_sns)
 
-# --- EXECUTION ---
-run_analysis()
-
 # --- LIVE REFRESH ---
-if auto_refresh:
-    time.sleep(refresh_interval)
-    st.rerun()
+@st.fragment(run_every=refresh_interval if auto_refresh else None)
+def live_analysis():
+    run_analysis()
+
+live_analysis()
